@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
-
+// root route
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({ success: true, message: "welcome to IMF_GADGET_API" });
 });
