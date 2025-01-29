@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { GadgetStatus } from '@prisma/client';
+import { Gadget, GadgetStatus } from '@prisma/client';
 import { v4 as uuidv4 } from 'uuid';
 
 import { generateCodename } from '../utils/codename';
@@ -14,7 +14,7 @@ export const getAllGadgets = async (req: Request, res: Response) => {
   try {
     const gadgets = await prisma.gadget.findMany({});
 
-    const gadgetsWithProbability = gadgets.map((gadget) => ({
+    const gadgetsWithProbability = gadgets.map((gadget: Gadget) => ({
       ...gadget,
       missionSuccessProbability: `${Math.floor(Math.random() * (100 - 50 + 1)) + 50}%`,
     }));
@@ -194,7 +194,7 @@ export const getAllGadgetsByStatus = async (req: Request, res: Response) => {
       }
     });
 
-    const gadgetsWithProbability = gadgets.map((gadget) => ({
+    const gadgetsWithProbability = gadgets.map((gadget: Gadget) => ({
       ...gadget,
       missionSuccessProbability: `${Math.floor(Math.random() * (100 - 50 + 1)) + 50}%`,
     }));
