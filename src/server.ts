@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -13,6 +13,11 @@ const PORT = process.env.PORT || 8000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).json({ success: true, message: "welcome to IMF_GADGET_API" });
+});
 
 // Routes
 app.use('/api/v1/auth', authRoutes);
