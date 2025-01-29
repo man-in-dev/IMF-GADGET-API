@@ -2,8 +2,12 @@
   "name": "imf-gadget-api",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "server": "tsc -b && node dist/server.js"
+ "scripts": {
+    "build": "tsc -b",
+    "start": "node dist/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "postinstall": "prisma generate && prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
